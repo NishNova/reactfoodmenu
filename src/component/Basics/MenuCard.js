@@ -1,37 +1,27 @@
-import React from 'react';
-
-const MenuCard = ({ menuData }) => {
-
+import React from "react";
+function truncate(string, n) {
+  return string?.length > n ? string.substr(0, n - 1) + "..." : string;
+}
+const MenuCard = ({ menu: { id, name, category, image, description } }) => {
+  console.log(image);
   return (
-    <>
-    <section className="main-card--container">
-        {menuData.map((currElem) => {
-          const {id, name, category, image, description} = currElem;
-
-
-
-          return (
-            <>
-              <div className='card-container' key={id}>
-                <div className='card'>
-                  <div className='card-body'>
-                    <span className='card-number card-circle subtle'>{id}</span>
-                    <span className='card-author subtle'></span>
-                    <h2 className='card-title'>{name}</h2>
-                    <span className='card-description subtle'>
-                      {description}
-                    </span>
-                    <div className='card-read'>Read</div>
-                    <img src={image} alt="images" className='card-media' />
-                    <span className='card-tag subtle'>Order Now</span>
-                  </div>
-                </div>
-              </div>
-            </>
-            );
-            })}
-            </section>
-      </>
+    <div>
+      <div className="card-container" key={id}>
+        <div className="card">
+          <div className="card-body">
+            <span className="card-number card-circle subtle">{id}</span>
+            <span className="card-author subtle"></span>
+            <h2 className="card-title">{name}</h2>
+            <span className="card-description subtle">
+              {truncate(description, 140)}
+            </span>
+            <div className="card-read">Read</div>
+            <img src={image} alt="images" className="card-media" />
+            <span className="card-tag subtle">Order Now</span>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 };
 
